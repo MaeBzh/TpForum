@@ -26,5 +26,7 @@
         </tr>
     </c:forEach>
 </table>
+<c:out value="Mon catId est : ${catId}"></c:out><br />
+<c:out value="Mon thrId est : ${thrId}"></c:out>
 </body>
 </html>

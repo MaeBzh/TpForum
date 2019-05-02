@@ -29,7 +29,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>showThread</servlet-name>
-        <url-pattern>/showThread</url-pattern>
+        <url-pattern>/category/*/thread/*</url-pattern>
     </servlet-mapping>
 
 </web-app>

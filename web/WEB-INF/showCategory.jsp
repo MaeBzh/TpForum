@@ -13,7 +13,7 @@
     <c:forEach items="${listCategory}" var="category">
         <tr>
             <td>
-                <a href="category/${category.id}/threads">${category.title}</a>
+                <a href="category/?catId=${category.id}">${category.title}</a>
             </td>
         </tr>
     </c:forEach>
