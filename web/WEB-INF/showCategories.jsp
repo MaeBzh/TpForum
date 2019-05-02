@@ -10,10 +10,17 @@
 <html>
 <body>
 <table>
+
     <c:forEach items="${listCategories}" var="categorie">
-        <tbody><a>${categorie}</a></tbody>
+        <tr>
+            <th>
+                <a href="categorie/${categorie}">${categorie}</a>
+            </th>
+        </tr>
     </c:forEach>
+
 </table>
+<%--TODO : Transformer les <p> de la table en lien pour qu'elles pointent vers showThread et qu'elles affichent les messages--%>
 </body>
 </html>
 <%@include file="footer.jsp" %>

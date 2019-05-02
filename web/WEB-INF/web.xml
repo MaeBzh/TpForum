@@ -23,4 +23,13 @@
         <url-pattern>/showThreads</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>showThread</servlet-name>
+        <servlet-class>servlets.showThread</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>showThread</servlet-name>
+        <url-pattern>/showThread</url-pattern>
+    </servlet-mapping>
+
 </web-app>
