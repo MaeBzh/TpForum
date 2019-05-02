@@ -1,5 +1,9 @@
 package beans;
 
+import repositories.MessageRepository;
+
+import java.util.ArrayList;
+
 public class User {
     private long id;
     private String firstname;
@@ -63,5 +67,12 @@ public class User {
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
+    }
+    
+    /*
+    ------------- Relations --------------------
+     */
+    public ArrayList<Message> messages() {
+        return MessageRepository.getByAuthor(this.getId());
     }
 }

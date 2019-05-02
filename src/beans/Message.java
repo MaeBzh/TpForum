@@ -6,8 +6,8 @@ public class Message {
     private long id;
     private String content;
     private DateTime date;
-    private int author;
-    private int thread;
+    private int authorId;
+    private int threadId;
 
     public long getId() {
         return this.id;
@@ -33,19 +33,27 @@ public class Message {
         this.date = date;
     }
 
-    public int getAuthor() {
-        return this.author;
+    public int getAuthorId() {
+        return this.authorId;
     }
 
-    public void setAuthor(int author) {
-        this.author = author;
+    public void setAuthorId(int author) {
+        this.authorId = author;
     }
 
-    public int getThread() {
-        return this.thread;
+    public int getThreadId() {
+        return this.threadId;
     }
 
-    public void setThread(int thread) {
-        this.thread = thread;
+    public void setThreadId(int thread) {
+        this.threadId = thread;
     }
+
+//    public User author() {
+//        return UserRepository.getById(this.getAuthorId());
+//    }
+//
+//    public Thread thread() {
+//        return ThreadRepository.getById(this.getThreadId());
+//    }
 }
