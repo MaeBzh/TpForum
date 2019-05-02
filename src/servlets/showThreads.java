@@ -6,10 +6,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class showCategories extends HttpServlet {
+public class showThreads extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("title", "Show Categories");
-        this.getServletContext().getRequestDispatcher("/WEB-INF/showCategories.jsp").forward(request, response);
+        request.setAttribute("title", "Show Threads");
+        this.getServletContext().getRequestDispatcher("/WEB-INF/showThreads.jsp").forward(request, response);
     }
 }
