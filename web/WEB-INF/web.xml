@@ -5,4 +5,31 @@
 		  http://java.sun.com/xml/ns/javaee/web-app_4_0.xsd"
            version="4.0">
 
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+        <welcome-file>index.htm</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>default.html</welcome-file>
+        <welcome-file>default.htm</welcome-file>
+        <welcome-file>default.jsp</welcome-file>
+    </welcome-file-list>
+
+    <servlet>
+        <servlet-name>CreateMessage</servlet-name>
+        <servlet-class>servlets.CreateMessage</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreateMessage</servlet-name>
+        <url-pattern>/message</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DisplayMessage</servlet-name>
+        <servlet-class>servlets.DisplayMessage</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DisplayMessage</servlet-name>
+        <url-pattern>/message{id}</url-pattern>
+    </servlet-mapping>
+
 </web-app>
