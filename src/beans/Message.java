@@ -3,12 +3,22 @@ package beans;
 import org.joda.time.DateTime;
 
 public class Message {
+    private long id;
     private String content;
     private DateTime date;
-    private User author;
+    private int author;
+    private int thread;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getContent() {
-        return content;
+        return this.content;
     }
 
     public void setContent(String content) {
@@ -16,18 +26,26 @@ public class Message {
     }
 
     public DateTime getDate() {
-        return date;
+        return this.date;
     }
 
     public void setDate(DateTime date) {
         this.date = date;
     }
 
-    public User getAuthor() {
-        return author;
+    public int getAuthor() {
+        return this.author;
     }
 
-    public void setAuthor(User author) {
+    public void setAuthor(int author) {
         this.author = author;
+    }
+
+    public int getThread() {
+        return this.thread;
+    }
+
+    public void setThread(int thread) {
+        this.thread = thread;
     }
 }
