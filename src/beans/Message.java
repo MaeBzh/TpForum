@@ -10,7 +10,7 @@ public class Message {
     private int thread;
 
     public long getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(long id) {

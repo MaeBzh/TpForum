@@ -17,6 +17,9 @@
         <div class="card-body">
             <p>Date : ${message.date}</p>
             <p>Message : ${message.content}</p>
+            <p>Auteur : ${message.author}</p>
+            <p>Thread : ${message.thread}</p>
+            <p>id : ${message.id}</p>
 
         </div>
     </div>

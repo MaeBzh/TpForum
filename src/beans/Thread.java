@@ -1,11 +1,20 @@
 package beans;
 
 public class Thread {
+    private long id;
     private String title;
     private User author;
 
+    public long getId() {
+        return this.id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
     public void setTitle(String title) {
@@ -13,7 +22,7 @@ public class Thread {
     }
 
     public User getAuthor() {
-        return author;
+        return this.author;
     }
 
     public void setAuthor(User author) {
