@@ -12,6 +12,7 @@ public class User {
     private String email;
     private String password;
     private String avatar;
+    private long roleId;
 
     public long getId() {
         return this.id;
@@ -68,10 +69,18 @@ public class User {
     public void setAvatar(String avatar) {
         this.avatar = avatar;
     }
-    
+
+    public long getRoleId() {
+        return this.roleId;
+    }
+
+    public void setRoleId(long roleId) {
+        this.roleId = roleId;
+    }
+
     /*
-    ------------- Relations --------------------
-     */
+        ------------- Relations --------------------
+         */
     public ArrayList<Message> messages() {
         return MessageRepository.getByAuthor(this.getId());
     }

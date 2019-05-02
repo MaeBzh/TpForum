@@ -20,10 +20,10 @@ public class MessageRepository {
         String query;
 
         try {
-            if (message.getId() == 0) {
-                query = "UDPATE Message SET(author = ?, thread = ?, content = ?);";
+            if (message.getId() != 0) {
+                query = "UPDATE message SET(author = ?, thread = ?, content = ?);";
             } else {
-                query = "INSERT INTO Message (author, thread, content) VALUES (?,?,?);";
+                query = "INSERT INTO message (author, thread, content) VALUES (?,?,?);";
             }
             PreparedStatement preparedStmt = getConnection().prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             preparedStmt.setInt(1, message.getAuthorId());

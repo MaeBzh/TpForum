@@ -1,5 +1,7 @@
 package servlets;
 
+import beans.User;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +22,7 @@ public class showCategories extends HttpServlet {
 
         request.setAttribute("title", "Index");
         request.setAttribute("listCategories", listCategories);
+
         this.getServletContext().getRequestDispatcher("/WEB-INF/showCategories.jsp").forward(request, response);
     }
 }

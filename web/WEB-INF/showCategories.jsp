@@ -10,6 +10,7 @@
 <html>
 <body>
 <table>
+    <p>Utilisateur connecté : ${sessionScope.connectedUser.id}</p>
 
     <c:forEach items="${listCategories}" var="categorie">
         <tr>

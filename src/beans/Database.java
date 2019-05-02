@@ -18,7 +18,6 @@ public class Database {
 
     protected Database() throws SQLException {
         String url = String.format("jdbc:mysql://localhost:3306/%s?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC", DATABASE);
-        System.out.println(url);
         /* Chargement du driver JDBC pour MySQL */
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
