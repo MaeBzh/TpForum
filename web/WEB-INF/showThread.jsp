@@ -9,6 +9,22 @@
 <%@include file="/WEB-INF/head.jsp" %>
 <html>
 <body>
-
+<table>
+    <c:forEach items="${listMessage}" var="message">
+        <tr>
+            <td>
+                <p>Subject : ${thread.title}</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>${message.content}</p>
+            </td>
+        </tr>
+        <tr>
+            <td><p>Auteur : ${thread.author}</p><p>Posté le : ${message.date}</p></td>
+        </tr>
+    </c:forEach>
+</table>
 </body>
 </html>

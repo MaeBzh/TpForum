@@ -6,12 +6,12 @@
          version="4.0">
 
     <servlet>
-        <servlet-name>showCategories</servlet-name>
-        <servlet-class>servlets.showCategories</servlet-class>
+        <servlet-name>showCategory</servlet-name>
+        <servlet-class>servlets.showCategory</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>showCategories</servlet-name>
-        <url-pattern>/showCategories</url-pattern>
+        <servlet-name>showCategory</servlet-name>
+        <url-pattern>/category</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -20,7 +20,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>showThreads</servlet-name>
-        <url-pattern>/showThreads</url-pattern>
+        <url-pattern>/category/*</url-pattern>
     </servlet-mapping>
 
     <servlet>

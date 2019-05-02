@@ -10,15 +10,13 @@
 <html>
 <body>
 <table>
-
-    <c:forEach items="${listCategories}" var="categorie">
+    <c:forEach items="${listCategory}" var="category">
         <tr>
-            <th>
-                <a href="categorie/${categorie}">${categorie}</a>
-            </th>
+            <td>
+                <a href="category/${category.id}/threads">${category.title}</a>
+            </td>
         </tr>
     </c:forEach>
-
 </table>
 <%--TODO : Transformer les <p> de la table en lien pour qu'elles pointent vers showThread et qu'elles affichent les messages--%>
 </body>
