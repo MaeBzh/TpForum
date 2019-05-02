@@ -4,9 +4,6 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 		  http://java.sun.com/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
-    <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
-    </welcome-file-list>
 
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
@@ -44,4 +41,23 @@
         <servlet-name>GestionTestJDBC</servlet-name>
         <url-pattern>/test_jdbc</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>showCategories</servlet-name>
+        <servlet-class>servlets.showCategories</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>showCategories</servlet-name>
+        <url-pattern>/showCategories</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>showThreads</servlet-name>
+        <servlet-class>servlets.showThreads</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>showThreads</servlet-name>
+        <url-pattern>/showThreads</url-pattern>
+    </servlet-mapping>
+
 </web-app>
