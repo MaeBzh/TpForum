@@ -13,7 +13,7 @@
     <c:forEach items="${listThread}" var="thread">
         <tr>
             <td>
-                <a href="thread/?thrId=${thread.id}">${thread.title}</a>
+                <a href="thread/?catId=${catId}&thrId=${thread.id}">${thread.title}</a>
             </td>
         </tr>
         <tr>

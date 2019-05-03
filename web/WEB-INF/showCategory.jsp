@@ -10,7 +10,10 @@
 <html>
 <body>
 <table>
+<<<<<<< HEAD
+=======
 
+>>>>>>> develop
     <c:forEach items="${listCategory}" var="category">
         <tr>
             <td>

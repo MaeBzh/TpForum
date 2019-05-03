@@ -45,11 +45,7 @@ public class Thread {
 
     public void setAuthorId(int authorId) {
         this.authorId = authorId;
-    }
-
-    public ArrayList<Message> messages() {
-        return MessageRepository.getByThread(this.getId());
-    }
+    }  
 
     public boolean isSolved() {
         return isSolved;
@@ -73,5 +69,9 @@ public class Thread {
 
     public void setCategoryId(int categoryId) {
         this.categoryId = categoryId;
+    }
+
+    public ArrayList<Message> messages() {
+        return MessageRepository.getByThread(this.getId());
     }
 }
