@@ -18,6 +18,10 @@ public class showThreads extends HttpServlet {
         List<Thread> listThread = new ArrayList<>();
 
         try {
+//            System.out.println(request.getParameter("catId"));
+//            Category category = CategoryRepository.getById(Integer.parseInt(request.getParameter("catId")));
+//            System.out.println(category);
+//            listThread = category.threads();
             listThread = ThreadRepository.getByCategory(Integer.parseInt(request.getParameter("catId")));
         } catch (SQLException e) {
             e.printStackTrace();

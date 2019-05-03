@@ -27,5 +27,18 @@
     <c:otherwise><c:out value="Aucun sujet n'a été trouvé"/></c:otherwise>
 </c:choose>
 <c:out value="Mon id est : ${catId}"/>
+<table>
+    <c:forEach items="${listThread}" var="thread">
+        <tr>
+            <td>
+                <a href="thread/?catId=${catId}&thrId=${thread.id}">${thread.title}</a>
+            </td>
+        </tr>
+        <tr>
+            <td><p>Auteur : ${thread.authorId}</p></td>
+        </tr>
+    </c:forEach>
+</table>
+<c:out value="Mon id est : ${catId}"></c:out>
 </body>
 </html>

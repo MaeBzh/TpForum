@@ -90,7 +90,6 @@ public class Thread {
     public Category category() throws SQLException {
         return CategoryRepository.getById(this.getCategoryId());
     }
-
     public User author(int id) throws SQLException {
         return UserRepository.getById(id);
     }
