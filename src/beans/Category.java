@@ -1,5 +1,9 @@
 package beans;
 
+import repositories.ThreadRepository;
+
+import java.util.ArrayList;
+
 public class Category {
     private String title;
     private int id;
@@ -18,5 +22,9 @@ public class Category {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public ArrayList<Thread> threads() {
+        return ThreadRepository.getByCategory(this.getId());
     }
 }
