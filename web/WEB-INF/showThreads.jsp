@@ -9,9 +9,10 @@
 <%@include file="/WEB-INF/head.jsp" %>
 <html>
 <body>
+showThreads
 <table>
     <c:forEach items="${listThreads}" var="thread">
-        <tbody><a>${thread}</a></tbody>
+        <tbody><a>${thread['title']}</a></tbody>
     </c:forEach>
 </table>
 </body>

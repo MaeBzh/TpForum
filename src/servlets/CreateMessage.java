@@ -23,22 +23,18 @@ public class CreateMessage extends HttpServlet {
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try {
+
 
             Message message = new Message();
             message.setContent(request.getParameter("content"));
             message.setDate(DateTime.now());
-            message.setAuthor(1);
-            message.setThread(1);
-            message = MessageRepository.insert(message);
+            message.setAuthorId(1);
+            message.setThreadId(1);
+            message = MessageRepository.save(message);
 
             request.setAttribute("message", message);
             response.setStatus(200);
-        } catch (SQLException e) {
-            e.printStackTrace();
-            request.setAttribute("error", e.getMessage());
-            response.setStatus(500);
-        }
+
 
         this.getServletContext().getRequestDispatcher("/WEB-INF/display_message.jsp").forward(request, response);
     }
