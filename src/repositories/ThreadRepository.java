@@ -120,7 +120,7 @@ public class ThreadRepository {
             PreparedStatement preparedStmt = getConnection().prepareStatement(query);
             System.out.println(preparedStmt);
             preparedStmt.setInt(1, category_id);
-            ResultSet rs = preparedStmt.executeQuery(query);
+            ResultSet rs = preparedStmt.executeQuery();
             while (rs.next()) {
                 Thread thread = new Thread();
                 thread.setTitle(rs.getString("title"));
@@ -144,7 +144,7 @@ public class ThreadRepository {
         try {
             PreparedStatement preparedStmt = getConnection().prepareStatement(query);
             preparedStmt.setInt(1, author_id);
-            ResultSet rs = preparedStmt.executeQuery(query);
+            ResultSet rs = preparedStmt.executeQuery();
             while (rs.next()) {
                 Thread thread = new Thread();
                 thread.setTitle(rs.getString("title"));

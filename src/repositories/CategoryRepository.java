@@ -69,7 +69,7 @@ public class CategoryRepository {
         ArrayList<Category> categories = new ArrayList<>();
         try {
             PreparedStatement preparedStmt = getConnection().prepareStatement(query);
-            ResultSet rs = preparedStmt.executeQuery(query);
+            ResultSet rs = preparedStmt.executeQuery();
             while (rs.next()) {
                 Category category = new Category();
                 category.setTitle(rs.getString("name"));
@@ -91,7 +91,7 @@ public class CategoryRepository {
         try {
             PreparedStatement preparedStmt = getConnection().prepareStatement(query);
             preparedStmt.setInt(1, category_id);
-            ResultSet rs = preparedStmt.executeQuery(query);
+            ResultSet rs = preparedStmt.executeQuery();
             if (rs.next()) {
                 category = new Category();
                 category.setTitle(rs.getString("name"));

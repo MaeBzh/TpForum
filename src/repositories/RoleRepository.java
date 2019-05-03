@@ -69,7 +69,7 @@ public class RoleRepository {
         ArrayList<Role> roles = new ArrayList<>();
         try {
             PreparedStatement preparedStmt = getConnection().prepareStatement(query);
-            ResultSet rs = preparedStmt.executeQuery(query);
+            ResultSet rs = preparedStmt.executeQuery();
             while (rs.next()) {
                 Role role = new Role();
                 role.setName(rs.getString("name"));
@@ -90,7 +90,7 @@ public class RoleRepository {
         try {
             PreparedStatement preparedStmt = getConnection().prepareStatement(query);
             preparedStmt.setInt(1, role_id);
-            ResultSet rs = preparedStmt.executeQuery(query);
+            ResultSet rs = preparedStmt.executeQuery();
             if (rs.next()) {
                 role = new Role();
                 role.setName(rs.getString("name"));

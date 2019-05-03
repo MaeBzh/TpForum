@@ -72,7 +72,7 @@ public class MessageRepository {
         ArrayList<Message> messages = new ArrayList<>();
         try {
             PreparedStatement preparedStmt = getConnection().prepareStatement(query);
-            ResultSet rs = preparedStmt.executeQuery(query);
+            ResultSet rs = preparedStmt.executeQuery();
             while (rs.next()) {
                 Message message = new Message();
                 message.setThreadId(rs.getInt("thread"));
@@ -97,7 +97,7 @@ public class MessageRepository {
         try {
             PreparedStatement preparedStmt = getConnection().prepareStatement(query);
             preparedStmt.setInt(1, message_id);
-            ResultSet rs = preparedStmt.executeQuery(query);
+            ResultSet rs = preparedStmt.executeQuery();
             if (rs.next()) {
                 message = new Message();
                 message.setThreadId(rs.getInt("thread"));
@@ -119,7 +119,7 @@ public class MessageRepository {
         try {
             PreparedStatement preparedStmt = getConnection().prepareStatement(query);
             preparedStmt.setInt(1, thread_id);
-            ResultSet rs = preparedStmt.executeQuery(query);
+            ResultSet rs = preparedStmt.executeQuery();
             while (rs.next()) {
                 Message message = new Message();
                 message.setThreadId(rs.getInt("thread"));
@@ -143,7 +143,7 @@ public class MessageRepository {
         try {
             PreparedStatement preparedStmt = getConnection().prepareStatement(query);
             preparedStmt.setInt(1, author_id);
-            ResultSet rs = preparedStmt.executeQuery(query);
+            ResultSet rs = preparedStmt.executeQuery();
             while (rs.next()) {
                 Message message = new Message();
                 message.setThreadId(rs.getInt("thread"));
