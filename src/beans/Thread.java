@@ -1,5 +1,9 @@
 package beans;
 
+import repositories.MessageRepository;
+
+import java.util.ArrayList;
+
 public class Thread {
     private String title;
     private User author;
@@ -12,7 +16,7 @@ public class Thread {
     }
 
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
     public void setTitle(String title) {
@@ -20,7 +24,7 @@ public class Thread {
     }
 
     public User getAuthor() {
-        return author;
+        return this.author;
     }
 
     public void setAuthor(User author) {
@@ -33,5 +37,9 @@ public class Thread {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public ArrayList<Message> messages() {
+        return MessageRepository.getByThread(this.getId());
     }
 }

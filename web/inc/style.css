@@ -1,25 +1,24 @@
 header, footer {
     background-color: turquoise;
-    color:  white;
-    position: absolute;
-    left: 0;
-    right: 0;
+    color: white;
 }
 
 footer {
-    bottom: 0;
     font-size: x-small;
     height: 60px;
-    line-height: 30px;
+    line-height: 60px;
 }
 
 header {
-    top: 0;
     height: 80px;
-    line-height: 40px;
+    line-height: 80px;
 }
 
 #header_title, #footer_title {
     padding-left: 20px;
+}
+
+#create_message {
+    margin-top: 100px;
 }
 

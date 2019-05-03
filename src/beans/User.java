@@ -1,15 +1,29 @@
 package beans;
 
+import repositories.MessageRepository;
+
+import java.util.ArrayList;
+
 public class User {
+    private long id;
     private String firstname;
     private String lastname;
     private String pseudo;
     private String email;
     private String password;
     private String avatar;
+    private long roleId;
+
+    public long getId() {
+        return this.id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getFirstname() {
-        return firstname;
+        return this.firstname;
     }
 
     public void setFirstname(String firstname) {
@@ -17,7 +31,7 @@ public class User {
     }
 
     public String getLastname() {
-        return lastname;
+        return this.lastname;
     }
 
     public void setLastname(String lastname) {
@@ -25,7 +39,7 @@ public class User {
     }
 
     public String getPseudo() {
-        return pseudo;
+        return this.pseudo;
     }
 
     public void setPseudo(String pseudo) {
@@ -33,7 +47,7 @@ public class User {
     }
 
     public String getEmail() {
-        return email;
+        return this.email;
     }
 
     public void setEmail(String email) {
@@ -41,7 +55,7 @@ public class User {
     }
 
     public String getPassword() {
-        return password;
+        return this.password;
     }
 
     public void setPassword(String password) {
@@ -49,10 +63,25 @@ public class User {
     }
 
     public String getAvatar() {
-        return avatar;
+        return this.avatar;
     }
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
+    }
+
+    public long getRoleId() {
+        return this.roleId;
+    }
+
+    public void setRoleId(long roleId) {
+        this.roleId = roleId;
+    }
+
+    /*
+        ------------- Relations --------------------
+         */
+    public ArrayList<Message> messages() {
+        return MessageRepository.getByAuthor(this.getId());
     }
 }
