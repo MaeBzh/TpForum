@@ -39,7 +39,7 @@ public class MessageRepository {
             if (message.getId() == 0) {
                 try (ResultSet generatedKeys = preparedStmt.getGeneratedKeys()) {
                     if (generatedKeys.next()) {
-                        result.setId(generatedKeys.getLong(1));
+                        result.setId(generatedKeys.getInt(1));
                     } else {
                         throw new SQLException("Creating message failed, no ID obtained.");
                     }
@@ -79,7 +79,7 @@ public class MessageRepository {
                 message.setAuthorId(rs.getInt("author"));
                 message.setContent(rs.getString("content"));
                 message.setDate(DateTime.parse(rs.getString("date")));
-                message.setId(rs.getLong("id"));
+                message.setId(rs.getInt("id"));
                 messages.add(message);
             }
 
@@ -90,12 +90,13 @@ public class MessageRepository {
         return messages;
     }
 
-    public static Message getById() throws SQLException {
+    public static Message getById(int message_id) throws SQLException {
         String query = "SELECT * from message WHERE id=? LIMIT 1";
         Message message = null;
 
         try {
             PreparedStatement preparedStmt = getConnection().prepareStatement(query);
+            preparedStmt.setInt(1, message_id);
             ResultSet rs = preparedStmt.executeQuery(query);
             if (rs.next()) {
                 message = new Message();
@@ -103,7 +104,7 @@ public class MessageRepository {
                 message.setAuthorId(rs.getInt("author"));
                 message.setContent(rs.getString("content"));
                 message.setDate(DateTime.parse(rs.getString("date")));
-                message.setId(rs.getLong("id"));
+                message.setId(rs.getInt("id"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -125,7 +126,7 @@ public class MessageRepository {
                 message.setAuthorId(rs.getInt("author"));
                 message.setContent(rs.getString("content"));
                 message.setDate(DateTime.parse(rs.getString("date")));
-                message.setId(rs.getLong("id"));
+                message.setId(rs.getInt("id"));
                 messages.add(message);
             }
 
@@ -136,7 +137,7 @@ public class MessageRepository {
         return messages;
     }
 
-    public static ArrayList<Message> getByAuthor(long author_id) {
+    public static ArrayList<Message> getByAuthor(int author_id) {
         String query = "SELECT * from message WHERE author = ?";
         ArrayList<Message> messages = new ArrayList<>();
         try {
@@ -149,7 +150,7 @@ public class MessageRepository {
                 message.setAuthorId(rs.getInt("author"));
                 message.setContent(rs.getString("content"));
                 message.setDate(DateTime.parse(rs.getString("date")));
-                message.setId(rs.getLong("id"));
+                message.setId(rs.getInt("id"));
                 messages.add(message);
             }
 

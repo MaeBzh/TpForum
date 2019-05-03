@@ -1,44 +1,44 @@
 package repositories;
 
-import beans.Category;
 import beans.Database;
+import beans.Role;
 
 import java.sql.*;
 import java.util.ArrayList;
 
-public class CategoryRepository {
+public class RoleRepository {
 
 
     private static Connection getConnection() throws SQLException {
         return Database.getInstance().getConnection();
     }
 
-    public static Category save(Category category) {
+    public static Role save(Role role) {
 
-        Category result = category;
+        Role result = role;
         String query;
 
         try {
-            if (category.getId() != 0) {
+            if (role.getId() != 0) {
                 query = "UPDATE category SET(name = ?);";
             } else {
-                query = "INSERT INTO message (author, thread, content) VALUES (?,?,?);";
+                query = "INSERT INTO role (name) VALUES (?);";
             }
             PreparedStatement preparedStmt = getConnection().prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-            preparedStmt.setString(1, category.getTitle());
+            preparedStmt.setString(1, role.getName());
 
             int affectedRows = preparedStmt.executeUpdate();
 
             if (affectedRows == 0) {
-                throw new SQLException("Creating category failed, no rows affected.");
+                throw new SQLException("Creating role failed, no rows affected.");
             }
 
-            if (category.getId() == 0) {
+            if (role.getId() == 0) {
                 try (ResultSet generatedKeys = preparedStmt.getGeneratedKeys()) {
                     if (generatedKeys.next()) {
                         result.setId(generatedKeys.getInt(1));
                     } else {
-                        throw new SQLException("Creating category failed, no ID obtained.");
+                        throw new SQLException("Creating role failed, no ID obtained.");
                     }
                 }
             }
@@ -50,13 +50,13 @@ public class CategoryRepository {
         return result;
     }
 
-    public static void delete(Category category) {
+    public static void delete(Role role) {
 
-        String query = "DELETE from category where id=?";
+        String query = "DELETE from role where id=?";
 
         try {
             PreparedStatement preparedStmt = getConnection().prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-            preparedStmt.setInt(1, category.getId());
+            preparedStmt.setInt(1, role.getId());
             preparedStmt.executeUpdate();
 
         } catch (SQLException e) {
@@ -64,41 +64,41 @@ public class CategoryRepository {
         }
     }
 
-    public static ArrayList<Category> getAll() {
-        String query = "SELECT * from category";
-        ArrayList<Category> categories = new ArrayList<>();
+    public static ArrayList<Role> getAll() {
+        String query = "SELECT * from role";
+        ArrayList<Role> roles = new ArrayList<>();
         try {
             PreparedStatement preparedStmt = getConnection().prepareStatement(query);
             ResultSet rs = preparedStmt.executeQuery(query);
             while (rs.next()) {
-                Category category = new Category();
-                category.setTitle(rs.getString("name"));
-                categories.add(category);
+                Role role = new Role();
+                role.setName(rs.getString("name"));
+                roles.add(role);
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return categories;
+        return roles;
     }
 
-    public static Category getById(int category_id) throws SQLException {
-        String query = "SELECT * from category WHERE id=? LIMIT 1";
-        Category category = null;
+    public static Role getById(int role_id) throws SQLException {
+        String query = "SELECT * from role WHERE id=? LIMIT 1";
+        Role role = null;
 
         try {
             PreparedStatement preparedStmt = getConnection().prepareStatement(query);
-            preparedStmt.setInt(1, category_id);
+            preparedStmt.setInt(1, role_id);
             ResultSet rs = preparedStmt.executeQuery(query);
             if (rs.next()) {
-                category = new Category();
-                category.setTitle(rs.getString("name"));
+                role = new Role();
+                role.setName(rs.getString("name"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return category;
+        return role;
     }
 }
