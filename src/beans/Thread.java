@@ -14,6 +14,7 @@ public class Thread {
     private boolean isValidate;
     private int authorId;
     private  int categoryId;
+    private User author;
 
     public Thread() {}
 
@@ -74,6 +75,14 @@ public class Thread {
         this.categoryId = categoryId;
     }
 
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
+    }
+
     public ArrayList<Message> messages() {
         return MessageRepository.getByThread(this.getId());
     }
@@ -82,7 +91,7 @@ public class Thread {
         return CategoryRepository.getById(this.getCategoryId());
     }
 
-    public User author() throws SQLException {
-        return UserRepository.getById(this.getAuthorId());
+    public User author(int id) throws SQLException {
+        return UserRepository.getById(id);
     }
 }
