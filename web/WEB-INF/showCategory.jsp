@@ -18,7 +18,6 @@
         </tr>
     </c:forEach>
 </table>
-<%--TODO : Transformer les <p> de la table en lien pour qu'elles pointent vers showThread et qu'elles affichent les messages--%>
 </body>
 </html>
 <%@include file="footer.jsp" %>
