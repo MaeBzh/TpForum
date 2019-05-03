@@ -16,6 +16,7 @@ public class showCategory extends HttpServlet {
         List<Category> listCategory;
 
         listCategory = CategoryRepository.getAll();
+        System.out.println(listCategory);
 
         request.setAttribute("title", "Index");
         request.setAttribute("listCategory", listCategory);

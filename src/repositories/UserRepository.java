@@ -42,7 +42,7 @@ public class UserRepository {
             preparedStmt.setString(3, user.getEmail());
             preparedStmt.setString(4, user.getPseudo());
             preparedStmt.setString(5, user.getAvatar());
-            preparedStmt.setLong(6, user.getRoleId());
+            preparedStmt.setInt(6, user.getRoleId());
 
 
             int affectedRows = preparedStmt.executeUpdate();
@@ -71,7 +71,7 @@ public class UserRepository {
             preparedStmt.setString(4, hash(user.getPassword()));
             preparedStmt.setString(5, user.getPseudo());
             preparedStmt.setString(6, user.getAvatar());
-            preparedStmt.setLong(7, user.getRoleId());
+            preparedStmt.setInt(7, user.getRoleId());
 
             int affectedRows = preparedStmt.executeUpdate();
 
@@ -112,7 +112,7 @@ public class UserRepository {
 
         try {
             PreparedStatement preparedStmt = getConnection().prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-            preparedStmt.setLong(1, user.getId());
+            preparedStmt.setInt(1, user.getId());
             preparedStmt.executeUpdate();
 
         } catch (SQLException e) {

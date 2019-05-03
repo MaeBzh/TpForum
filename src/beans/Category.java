@@ -2,6 +2,7 @@ package beans;
 
 import repositories.ThreadRepository;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Category {
@@ -24,7 +25,7 @@ public class Category {
         this.id = id;
     }
 
-    public ArrayList<Thread> threads() {
+    public ArrayList<Thread> threads() throws SQLException {
         return ThreadRepository.getByCategory(this.getId());
     }
 }

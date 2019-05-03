@@ -13,7 +13,7 @@ public class Message {
     private int authorId;
     private int threadId;
 
-    public long getId() {
+    public int getId() {
         return this.id;
     }
 

@@ -73,7 +73,7 @@ public class CategoryRepository {
             while (rs.next()) {
                 Category category = new Category();
                 category.setTitle(rs.getString("name"));
-                category.setId(rs.getInt("category_id"));
+                category.setId(rs.getInt("id"));
                 categories.add(category);
             }
 

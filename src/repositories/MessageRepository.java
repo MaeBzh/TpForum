@@ -59,7 +59,7 @@ public class MessageRepository {
 
         try {
             PreparedStatement preparedStmt = getConnection().prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-            preparedStmt.setLong(1, message.getId());
+            preparedStmt.setInt(1, message.getId());
             preparedStmt.executeUpdate();
 
         } catch (SQLException e) {
@@ -113,12 +113,12 @@ public class MessageRepository {
         return message;
     }
 
-    public static ArrayList<Message> getByThread(long thread_id) {
+    public static ArrayList<Message> getByThread(int thread_id) {
         String query = "SELECT * from message WHERE thread = ?";
         ArrayList<Message> messages = new ArrayList<>();
         try {
             PreparedStatement preparedStmt = getConnection().prepareStatement(query);
-            preparedStmt.setLong(1, thread_id);
+            preparedStmt.setInt(1, thread_id);
             ResultSet rs = preparedStmt.executeQuery(query);
             while (rs.next()) {
                 Message message = new Message();
@@ -142,7 +142,7 @@ public class MessageRepository {
         ArrayList<Message> messages = new ArrayList<>();
         try {
             PreparedStatement preparedStmt = getConnection().prepareStatement(query);
-            preparedStmt.setLong(1, author_id);
+            preparedStmt.setInt(1, author_id);
             ResultSet rs = preparedStmt.executeQuery(query);
             while (rs.next()) {
                 Message message = new Message();

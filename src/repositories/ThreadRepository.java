@@ -113,7 +113,7 @@ public class ThreadRepository {
         return thread;
     }
 
-    public static ArrayList<Thread> getByCategory(int category_id) {
+    public static ArrayList<Thread> getByCategory(int category_id) throws SQLException {
         String query = "SELECT * from thread WHERE category = ?";
         ArrayList<Thread> threads = new ArrayList<>();
         try {
