@@ -152,7 +152,7 @@ public class UserRepository {
         try {
             PreparedStatement preparedStmt = getConnection().prepareStatement(query);
             preparedStmt.setInt(1, user_id);
-            ResultSet rs = preparedStmt.executeQuery(query);
+            ResultSet rs = preparedStmt.executeQuery();
             if (rs.next()) {
                 user = new User();
                 user.setFirstname(rs.getString("prenom"));

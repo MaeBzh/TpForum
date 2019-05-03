@@ -69,11 +69,11 @@ public class CategoryRepository {
         ArrayList<Category> categories = new ArrayList<>();
         try {
             PreparedStatement preparedStmt = getConnection().prepareStatement(query);
-            ResultSet rs = preparedStmt.executeQuery(query);
+            ResultSet rs = preparedStmt.executeQuery();
             while (rs.next()) {
                 Category category = new Category();
                 category.setTitle(rs.getString("name"));
-                category.setId(rs.getInt("category_id"));
+                category.setId(rs.getInt("id"));
                 categories.add(category);
             }
 

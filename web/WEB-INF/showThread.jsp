@@ -22,7 +22,7 @@
             </td>
         </tr>
         <tr>
-            <td><p>Auteur : ${thread.author}</p><p>Posté le : ${message.date}</p></td>
+            <td><p>Auteur : ${thread.authorId}</p><p>Posté le : ${message.date}</p></td>
         </tr>
     </c:forEach>
 </table>
