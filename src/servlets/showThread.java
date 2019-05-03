@@ -17,7 +17,6 @@ import java.util.List;
 public class showThread extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Message> listMessages;
-
         listMessages = MessageRepository.getByThread(Integer.parseInt(request.getParameter("thrId")));
 
         request.setAttribute("title", "Show Thread");

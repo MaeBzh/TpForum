@@ -27,7 +27,7 @@
                 </c:forEach>
             </table>
             <div class="text-center">
-                <a class="btn btn-info" href="thread/respond?thrId=${thread.id}">Répondre</a>
+                <a class="btn btn-info" href="message/?thrId=${thread.id}">Répondre</a>
             </div>
         </div>
     </div>
