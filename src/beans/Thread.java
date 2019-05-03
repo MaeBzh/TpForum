@@ -14,7 +14,7 @@ public class Thread {
     private boolean isValidate;
     private int authorId;
     private  int categoryId;
-    private User user;
+    private User author;
 
     public Thread() {}
 
@@ -75,12 +75,12 @@ public class Thread {
         this.categoryId = categoryId;
     }
 
-    public User getUser() {
-        return user;
+    public User getAuthor() {
+        return author;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setAuthor(User author) {
+        this.author = author;
     }
 
     public ArrayList<Message> messages() {

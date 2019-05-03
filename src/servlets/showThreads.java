@@ -22,7 +22,7 @@ public class showThreads extends HttpServlet {
         listThread = ThreadRepository.getByCategory(Integer.parseInt(request.getParameter("catId")));
         for (Thread thread : listThread) {
             try {
-                thread.setUser(thread.author(thread.getAuthorId()));
+                thread.setAuthor(thread.author(thread.getAuthorId()));
             } catch (SQLException e) {
                 e.printStackTrace();
             }

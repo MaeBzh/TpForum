@@ -19,7 +19,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><p>Auteur : ${thread.user.pseudo}</p></td>
+                    <td><p>Auteur : ${thread.author.pseudo}</p></td>
                 </tr>
             </c:forEach>
         </table>
