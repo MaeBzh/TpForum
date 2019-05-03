@@ -97,7 +97,7 @@ public class ThreadRepository {
         try {
             PreparedStatement preparedStmt = getConnection().prepareStatement(query);
             preparedStmt.setInt(1, thread_id);
-            ResultSet rs = preparedStmt.executeQuery(query);
+            ResultSet rs = preparedStmt.executeQuery();
             if (rs.next()) {
                 thread = new Thread();
                 thread.setTitle(rs.getString("title"));
@@ -123,6 +123,7 @@ public class ThreadRepository {
             ResultSet rs = preparedStmt.executeQuery();
             while (rs.next()) {
                 Thread thread = new Thread();
+                thread.setId(rs.getInt("id"));
                 thread.setTitle(rs.getString("title"));
                 thread.setAuthorId(rs.getInt("author"));
                 thread.setCategoryId(rs.getInt("category"));

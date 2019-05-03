@@ -3,6 +3,7 @@ package repositories;
 import beans.Database;
 import beans.Message;
 import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormatter;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -125,10 +126,8 @@ public class MessageRepository {
                 message.setThreadId(rs.getInt("thread"));
                 message.setAuthorId(rs.getInt("author"));
                 message.setContent(rs.getString("content"));
-                message.setDate(DateTime.parse(rs.getString("date")));
                 message.setId(rs.getInt("id"));
-                messages.add(message);
-            }
+                messages.add(message); }
 
         } catch (SQLException e) {
             e.printStackTrace();

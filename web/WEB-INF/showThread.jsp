@@ -10,10 +10,10 @@
 <html>
 <body>
 <table>
-    <c:forEach items="${listMessage}" var="message">
+    <c:forEach items="${listMessages}" var="message">
         <tr>
             <td>
-                <p>Subject : ${thread.title}</p>
+                <p>Subject : ${titleThr}</p>
             </td>
         </tr>
         <tr>
@@ -22,11 +22,9 @@
             </td>
         </tr>
         <tr>
-            <td><p>Auteur : ${thread.authorId}</p><p>Posté le : ${message.date}</p></td>
+            <td><p>Auteur : ${message.author.pseudo}</p></td>
         </tr>
     </c:forEach>
 </table>
-<c:out value="Mon catId est : ${catId}"></c:out><br />
-<c:out value="Mon thrId est : ${thrId}"></c:out>
 </body>
 </html>

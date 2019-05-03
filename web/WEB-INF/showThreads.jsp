@@ -10,7 +10,7 @@
 <html>
 <body>
 <c:choose>
-    <c:when test="${listThread != null}">
+    <c:when test="${not empty listThread}">
         <table>
             <c:forEach items="${listThread}" var="thread">
                 <tr>
@@ -20,12 +20,13 @@
                 </tr>
                 <tr>
                     <td><p>Auteur : ${thread.author.pseudo}</p></td>
+                    <td><c:if test="${thread.isSolved == true}" ><c:out value="Sujet résolu" /></c:if></td>
+                    <td><c:if test="${thread.isSolved == false}"><c:out value="Sujet en cours" /></c:if></td>
                 </tr>
             </c:forEach>
         </table>
     </c:when>
     <c:otherwise><c:out value="Aucun sujet n'a été trouvé"/></c:otherwise>
 </c:choose>
-<c:out value="Mon id est : ${catId}"/>
 </body>
 </html>
