@@ -21,7 +21,7 @@ public class ThreadRepository {
             if (thread.getId() != 0) {
                 query = "UPDATE thread SET(title = ?, issolved = ?, isvalidate = ?, author = ?, category = ?);";
             } else {
-                query = "INSERT INTO message (title, issolved, isvalidate, author, category) VALUES (?,?,?,?,?);";
+                query = "INSERT INTO thread (title, issolved, isvalidate, author, category) VALUES (?,?,?,?,?);";
             }
             PreparedStatement preparedStmt = getConnection().prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             preparedStmt.setString(1, thread.getTitle());
@@ -118,7 +118,6 @@ public class ThreadRepository {
         ArrayList<Thread> threads = new ArrayList<>();
         try {
             PreparedStatement preparedStmt = getConnection().prepareStatement(query);
-            System.out.println(preparedStmt);
             preparedStmt.setInt(1, category_id);
             ResultSet rs = preparedStmt.executeQuery();
             while (rs.next()) {

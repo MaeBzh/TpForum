@@ -93,4 +93,11 @@ public class User {
         return RoleRepository.getById(this.getRoleId());
     }
 
+    public boolean isAdmin() {
+        boolean isAdmin = false;
+        if(this.getRoleId() == 1) {
+            isAdmin = true;
+        }
+         return isAdmin;
+    }
 }

@@ -11,7 +11,10 @@
 <body>
 <div class="row">
     <div class="card col-md-6 my-5 mx-auto p-0">
-        <div class="card-header bg-info mb-4 text-white"><h2>Discussions</h2></div>
+        <div class="card-header bg-info mb-4 text-white">
+            <h2>Discussions</h2>
+            <a class="btn btn-secondary" href="newthread/?catId=${requestScope.catId}">Ajouter</a>
+        </div>
         <div class="card-body">
             <c:choose>
                 <c:when test="${not empty listThread}">

@@ -34,7 +34,7 @@
                 <button class="btn btn-info btn-block my-4" type="submit">Connexion</button>
 
                 <p>Pas encore de compte ?
-                    <a href="signin">Inscription</a>
+                    <a href="signin" class="text-info">Inscription</a>
                 </p>
 
             </form>

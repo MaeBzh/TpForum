@@ -17,21 +17,21 @@
             <table class="table">
                 <c:forEach items="${listMessages}" var="message">
                     <tr>
-                        <td>
+                        <td class="d-block">
                             <p>${message.content}</p>
                         <td>
-                        <td>
+                        <td class="d-block">
                             <p class="text-info">Auteur : ${message.author.pseudo}</p>
-                        </td>
-                        <td>
-                            <button>Répondre</button>
                         </td>
                     </tr>
                 </c:forEach>
             </table>
+            <div class="text-center">
+                <a class="btn btn-info" href="thread/respond?thrId=${thread.id}">Répondre</a>
+            </div>
         </div>
     </div>
 </div>
-<jsp:include page="footer.jsp"
+<jsp:include page="footer.jsp"/>
 </body>
 </html>

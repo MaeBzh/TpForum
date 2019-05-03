@@ -1,9 +1,11 @@
 package servlets;
 
-import beans.Database;
 import beans.Message;
+import beans.Thread;
+import beans.User;
 import org.joda.time.DateTime;
 import repositories.MessageRepository;
+import repositories.ThreadRepository;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -20,15 +22,29 @@ public class CreateMessage extends HttpServlet {
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-            Message message = new Message();
-            message.setContent(request.getParameter("content"));
-            message.setDate(DateTime.now());
-            message.setAuthorId(1);
-            message.setThreadId(1);
-            message = MessageRepository.save(message);
+        User user = (User) request.getSession().getAttribute("connectedUser");
+        Message message = new Message();
+        int thrId = Integer.parseInt(request.getParameter("thrId"));
+        if (thrId != 0) {
+            message.setThreadId(thrId);
+        } else {
+            Thread thread = new Thread();
+            thread.setTitle(request.getParameter("title"));
+            thread.setCategoryId(Integer.parseInt(request.getParameter("catId")));
+            thread.setAuthorId(user.getId());
+            thread.setSolved(false);
+            thread.setValidate(true);
+            ThreadRepository.save(thread);
+        }
 
-            request.setAttribute("message", message);
-            response.setStatus(200);
+        message.setContent(request.getParameter("content"));
+        message.setDate(DateTime.now());
+        message.setAuthorId(1);
+
+        message = MessageRepository.save(message);
+
+        request.setAttribute("message", message);
+        response.setStatus(200);
 
         this.getServletContext().getRequestDispatcher("/WEB-INF/display_message.jsp").forward(request, response);
     }
