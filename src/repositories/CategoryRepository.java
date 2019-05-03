@@ -83,12 +83,13 @@ public class CategoryRepository {
         return categories;
     }
 
-    public static Category getById() throws SQLException {
+    public static Category getById(int id) throws SQLException {
         String query = "SELECT * from category WHERE id=? LIMIT 1";
         Category category = null;
 
         try {
             PreparedStatement preparedStmt = getConnection().prepareStatement(query);
+            preparedStmt.setInt(id, category.getId());
             ResultSet rs = preparedStmt.executeQuery(query);
             if (rs.next()) {
                 category = new Category();
