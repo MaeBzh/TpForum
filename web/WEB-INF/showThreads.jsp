@@ -20,8 +20,8 @@
                 </tr>
                 <tr>
                     <td><p>Auteur : ${thread.author.pseudo}</p></td>
-                    <td><c:if test="${thread.isSolved == true}" ><c:out value="Sujet résolu" /></c:if></td>
-                    <td><c:if test="${thread.isSolved == false}"><c:out value="Sujet en cours" /></c:if></td>
+                    <td><c:if test="${thread.isSolved}" ><c:out value="Sujet résolu" /></c:if></td>
+<%--                    <td><c:if test="${thread.isSolved == false}"><c:out value="Sujet en cours" /></c:if></td>--%>
                 </tr>
             </c:forEach>
         </table>

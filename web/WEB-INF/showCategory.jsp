@@ -15,6 +15,7 @@
         <tr>
             <td>
                 <a href="category/?catId=${category.id}">${category.title}</a>
+                <c:out value="Nb Threads : ${category.nbThreads}" />
             </td>
         </tr>
     </c:forEach>

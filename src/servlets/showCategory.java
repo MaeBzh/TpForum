@@ -2,12 +2,15 @@ package servlets;
 
 import beans.Category;
 import repositories.CategoryRepository;
+import repositories.ThreadRepository;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class showCategory extends HttpServlet {
@@ -17,6 +20,14 @@ public class showCategory extends HttpServlet {
 
         listCategory = CategoryRepository.getAll();
         System.out.println(listCategory);
+
+        for (Category cat: listCategory) {
+            try {
+                cat.setNbThreads(cat.threads().size());
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
 
         request.setAttribute("title", "Index");
         request.setAttribute("listCategory", listCategory);

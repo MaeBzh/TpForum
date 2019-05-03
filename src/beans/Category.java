@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class Category {
     private String title;
     private int id;
+    private int nbThreads;
 
     public String getTitle() {
         return this.title;
@@ -23,6 +24,14 @@ public class Category {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getNbThreads() {
+        return nbThreads;
+    }
+
+    public void setNbThreads(int nbThreads) {
+        this.nbThreads = nbThreads;
     }
 
     public ArrayList<Thread> threads() throws SQLException {
