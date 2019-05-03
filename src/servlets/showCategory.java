@@ -19,7 +19,6 @@ public class showCategory extends HttpServlet {
         List<Category> listCategory;
 
         listCategory = CategoryRepository.getAll();
-        System.out.println(listCategory);
 
         for (Category cat: listCategory) {
             try {

@@ -8,12 +8,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<head>
-    <meta charset="UTF-8">
-    <title>${title}</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link type="text/css" rel="stylesheet" href="../inc/style.css" />
-</head>
+<jsp:include page="head.jsp"/>
+<%--<head>--%>
+<%--    <meta charset="UTF-8">--%>
+<%--    <title>${title}</title>--%>
+<%--    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">--%>
+<%--    <link type="text/css" rel="stylesheet" href="../inc/style.css" />--%>
+<%--</head>--%>
 <body>
 <jsp:include page="header.jsp"/>
 <div class="row">
@@ -22,9 +23,9 @@
         <div class="card-body">
             <form class="text-center border border-light p-5" action="login" method="post">
 
-                <input type="text" id="pseudo" class="form-control mb-4" placeholder="Pseudo" name="pseudo" required>
+                <input type="text" id="pseudo" class="form-control mb-4" placeholder="Pseudo" name="pseudo" value="dev" required>
 
-                <input type="password" id="password" class="form-control mb-4" placeholder="Mot de passe" name="password" required>
+                <input type="password" id="password" class="form-control mb-4" placeholder="Mot de passe" value="azerty" name="password" required>
 
                 <div class="d-flex justify-content-around">
                     <a href="forgot_password">Mot de passe oublié ?</a>

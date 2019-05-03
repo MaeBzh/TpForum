@@ -10,16 +10,25 @@
 <html>
 <jsp:include page="header.jsp"/>
 <body>
-<table>
-    <c:forEach items="${listCategory}" var="category">
-        <tr>
-            <td>
-                <a href="category/?catId=${category.id}">${category.title}</a>
-                <c:out value="Nb Threads : ${category.nbThreads}" />
-            </td>
-        </tr>
-    </c:forEach>
-</table>
+<div class="row">
+    <div class="card col-md-6 my-5 mx-auto p-0">
+        <div class="card-header bg-info mb-4 text-white"><h2>Catégories</h2></div>
+        <div class="card-body">
+            <table class="table">
+                <c:forEach items="${listCategory}" var="category">
+                    <tr>
+                        <td class="row">
+                            <a class="col-md-10 text-secondary" href="category/?catId=${category.id}">${category.title}</a>
+                            <p>${category.nbThreads} discussions</p>
+                        </td>
+                    </tr>
+                </c:forEach>
+            </table>
+
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
 <%@include file="footer.jsp" %>

@@ -29,6 +29,7 @@ public class Login extends HttpServlet {
         if (user != null) {
             session.setAttribute("connectedUser", user);
         }
-        this.getServletContext().getRequestDispatcher("/WEB-INF/showCategory.jsp").forward(request, response);
+        response.sendRedirect("category");
+//        this.getServletContext().getRequestDispatcher("/WEB-INF/showCategory.jsp").forward(request, response);
     }
 }

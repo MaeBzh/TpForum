@@ -26,7 +26,6 @@ public class UserRepository {
         byte[] thedigest = md.digest(bytesOfMessage);
         BigInteger bigInt = new BigInteger(1, thedigest);
         String pwd = bigInt.toString(16);
-        System.out.println(pwd);
         return pwd;
     }
 

@@ -9,24 +9,27 @@
 <%@include file="/WEB-INF/head.jsp" %>
 <html>
 <body>
-<c:choose>
-    <c:when test="${not empty listThread}">
-        <table>
-            <c:forEach items="${listThread}" var="thread">
-                <tr>
-                    <td>
-                        <a href="thread/?catId=${catId}&thrId=${thread.id}">${thread.title}</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td><p>Auteur : ${thread.author.pseudo}</p></td>
-                    <td><c:if test="${thread.isSolved}" ><c:out value="Sujet résolu" /></c:if></td>
-<%--                    <td><c:if test="${thread.isSolved == false}"><c:out value="Sujet en cours" /></c:if></td>--%>
-                </tr>
-            </c:forEach>
-        </table>
-    </c:when>
-    <c:otherwise><c:out value="Aucun sujet n'a été trouvé"/></c:otherwise>
-</c:choose>
+<div class="row">
+    <div class="card col-md-6 my-5 mx-auto p-0">
+        <div class="card-header bg-info mb-4 text-white"><h2>Discussions</h2></div>
+        <div class="card-body">
+            <c:choose>
+                <c:when test="${not empty listThread}">
+                    <table class="table">
+                        <c:forEach items="${listThread}" var="thread">
+                            <tr>
+                                <td class="row">
+                                    <a class="col-md-8 text-secondary" href="thread/?catId=${catId}&thrId=${thread.id}">${thread.title}</a>
+                                    <p class="col-md-4 text-info">Auteur : ${thread.author.pseudo}</p>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </table>
+                </c:when>
+                <c:otherwise><c:out value="Aucun sujet n'a été trouvé"/></c:otherwise>
+            </c:choose>
+        </div>
+    </div>
+</div>
 </body>
 </html>

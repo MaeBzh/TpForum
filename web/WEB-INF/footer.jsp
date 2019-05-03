@@ -1,3 +1,3 @@
 <footer>
-   <h1 id="footer_title" class="bg-secondary text-white fixed-bottom">Un super footer</h1>
+   <h5 id="footer_title" class="bg-secondary text-white fixed-bottom">Yannik Guillodo, Romain Matteo, Maelenn Picaud</h5>
 </footer>
