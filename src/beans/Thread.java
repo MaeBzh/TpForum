@@ -1,7 +1,10 @@
 package beans;
 
+import repositories.CategoryRepository;
 import repositories.MessageRepository;
+import repositories.UserRepository;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Thread {
@@ -12,7 +15,7 @@ public class Thread {
     private int authorId;
     private  int categoryId;
 
-    public Thread() {};
+    public Thread() {}
 
     public Thread(int id, String title, boolean isSolved, boolean isValidate, int authorId, int categoryId) {
         this.id = id;
@@ -73,5 +76,13 @@ public class Thread {
 
     public ArrayList<Message> messages() {
         return MessageRepository.getByThread(this.getId());
+    }
+
+    public Category category() throws SQLException {
+        return CategoryRepository.getById(this.getCategoryId());
+    }
+
+    public User author() throws SQLException {
+        return UserRepository.getById(this.getAuthorId());
     }
 }

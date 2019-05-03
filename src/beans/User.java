@@ -1,7 +1,10 @@
 package beans;
 
 import repositories.MessageRepository;
+import repositories.RoleRepository;
+import repositories.ThreadRepository;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class User {
@@ -14,7 +17,7 @@ public class User {
     private String avatar;
     private int roleId;
 
-    public long getId() {
+    public int getId() {
         return this.id;
     }
 
@@ -70,7 +73,7 @@ public class User {
         this.avatar = avatar;
     }
 
-    public long getRoleId() {
+    public int getRoleId() {
         return this.roleId;
     }
 
@@ -78,10 +81,16 @@ public class User {
         this.roleId = roleId;
     }
 
-    /*
-        ------------- Relations --------------------
-         */
     public ArrayList<Message> messages() {
         return MessageRepository.getByAuthor(this.getId());
     }
+
+    public ArrayList<Thread> thread() {
+        return ThreadRepository.getByAuthor(this.getId());
+    }
+
+    public Role role() throws SQLException {
+        return RoleRepository.getById(this.getRoleId());
+    }
+
 }
