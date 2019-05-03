@@ -10,7 +10,7 @@
 <html>
 <body>
 <table>
-    <c:forEach items="${listCategories}" var="categorie">
+    <c:forEach items="${listCategory}" var="category">
         <tr>
             <td>
                 <a href="category/?catId=${category.id}">${category.title}</a>
