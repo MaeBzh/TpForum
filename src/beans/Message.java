@@ -12,6 +12,7 @@ public class Message {
     private DateTime date;
     private int authorId;
     private int threadId;
+    private User author;
 
     public int getId() {
         return this.id;
@@ -53,11 +54,23 @@ public class Message {
         this.threadId = thread;
     }
 
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
+    }
+
     public User author() throws SQLException {
         return UserRepository.getById(this.getAuthorId());
     }
 
     public Thread thread() throws SQLException{
         return ThreadRepository.getById(this.getThreadId());
+    }
+
+    public User author(int id) throws SQLException {
+        return UserRepository.getById(id);
     }
 }
