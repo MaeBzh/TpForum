@@ -1,11 +1,17 @@
-<header class="m-0">
-   <h1 id="header_title" class="col-md-8">TP  <p>${sessionScope.connectedUser}</p></h1>
-
-<%--   <c:set var="user" value=session.user/>--%>
-<%--   <c:if session.user="${ 12 > 7 }" var="maVariable" scope="session">--%>
-<%--      Ce test est vrai.--%>
-<%--   </c:if>--%>
-<%--   <c:if--%>
-   <a class="btn btn-primary col-md-2 mx-2" href="login">Connexion</a>
-   <a class="btn btn-primary col-md-2 mx-2">Inscription</a>
+<header class="row bg-secondary text-white">
+    <h1 id="header_title" class="col-md-6">TP Forum</h1>
+    <div class="col-md-6">
+        <c:choose>
+            <c:when test="${empty sessionScope.connectedUser}">
+                <a class="btn btn-info col-md-5 m-2" href="login">Connexion</a>
+                <a class="btn btn-info col-md-5 m-2" href="signin">Inscription</a>
+            </c:when>
+            <c:otherwise>
+                <p class="col-md-5 m-2 d-inline-block">Bonjour ${sessionScope.connectedUser.pseudo}</p>
+                <form class="col-md-5 m-2 d-inline-block" action="logout" method="post">
+                    <input class="btn btn-info" type="submit" name="logout" value="Deconnexion"/>
+                </form>
+            </c:otherwise>
+        </c:choose>
+    </div>
 </header>

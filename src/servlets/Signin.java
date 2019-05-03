@@ -11,24 +11,29 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
-public class Login extends HttpServlet {
+public class Signin extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("title", "Connexion");
-        this.getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+        request.setAttribute("title", "Inscription");
+        this.getServletContext().getRequestDispatcher("/WEB-INF/signin.jsp").forward(request, response);
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        User user = null;
+        User user = new User();
+        user.setPseudo(request.getParameter("pseudo"));
+        user.setFirstname(request.getParameter("firstname"));
+        user.setLastname(request.getParameter("lastname"));
+        user.setEmail(request.getParameter("email"));
+        user.setPassword(request.getParameter("password"));
+        user.setRoleId(2);
+
         try {
-            user = UserRepository.checkCredentials(request.getParameter("pseudo"), request.getParameter("password"));
+            UserRepository.insert(user);
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
         HttpSession session = request.getSession();
-        if (user != null) {
-            session.setAttribute("connectedUser", user);
-        }
+        session.setAttribute("connectedUser", user);
         this.getServletContext().getRequestDispatcher("/WEB-INF/showCategory.jsp").forward(request, response);
     }
 }

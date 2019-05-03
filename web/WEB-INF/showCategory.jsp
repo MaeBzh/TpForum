@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="/WEB-INF/head.jsp" %>
 <html>
+<jsp:include page="header.jsp"/>
 <body>
 <table>
     <c:forEach items="${listCategory}" var="category">

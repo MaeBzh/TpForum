@@ -7,38 +7,33 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<jsp:include page="head.jsp"/>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<head>
+    <meta charset="UTF-8">
+    <title>${title}</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="../inc/style.css" />
+</head>
 <body>
 <jsp:include page="header.jsp"/>
-
 <div class="row">
-    <div class="card col-md-6 mt-5 mx-auto">
-        <div class="card-header h4 mb-4">Connexion</div>
+    <div class="card col-md-6 my-5 mx-auto p-0">
+        <div class="card-header bg-info mb-4 text-white"><h2>Connexion</h2></div>
         <div class="card-body">
             <form class="text-center border border-light p-5" action="login" method="post">
 
-                <input type="text" id="pseudo" class="form-control mb-4" placeholder="Pseudo" name="pseudo">
+                <input type="text" id="pseudo" class="form-control mb-4" placeholder="Pseudo" name="pseudo" required>
 
-                <input type="password" id="password" class="form-control mb-4" placeholder="Mot de passe" name="password">
+                <input type="password" id="password" class="form-control mb-4" placeholder="Mot de passe" name="password" required>
 
                 <div class="d-flex justify-content-around">
-                    <div>
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">
-                            <label class="custom-control-label" for="defaultLoginFormRemember">Se souvenir de moi</label>
-                        </div>
-                    </div>
-                    <div>
-                        <a href="">Mot de passe oublié ?</a>
-                    </div>
+                    <a href="forgot_password">Mot de passe oublié ?</a>
                 </div>
 
-                <!-- Sign in button -->
                 <button class="btn btn-info btn-block my-4" type="submit">Connexion</button>
 
-                <!-- Register -->
                 <p>Pas encore de compte ?
-                    <a href="">Inscription</a>
+                    <a href="signin">Inscription</a>
                 </p>
 
             </form>
