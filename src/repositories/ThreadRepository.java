@@ -118,6 +118,7 @@ public class ThreadRepository {
         ArrayList<Thread> threads = new ArrayList<>();
         try {
             PreparedStatement preparedStmt = getConnection().prepareStatement(query);
+            System.out.println(preparedStmt);
             preparedStmt.setInt(1, category_id);
             ResultSet rs = preparedStmt.executeQuery(query);
             while (rs.next()) {

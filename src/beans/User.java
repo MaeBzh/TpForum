@@ -14,7 +14,7 @@ public class User {
     private String avatar;
     private int roleId;
 
-    public long getId() {
+    public int getId() {
         return this.id;
     }
 
