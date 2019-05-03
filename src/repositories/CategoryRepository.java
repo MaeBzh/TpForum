@@ -2,48 +2,102 @@ package repositories;
 
 import beans.Category;
 import beans.Database;
-import beans.Message;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 
 public class CategoryRepository {
 
-    CategoryRepository() {
+
+    private static Connection getConnection() throws SQLException {
+        return Database.getInstance().getConnection();
     }
 
-    public static Category insert(Category category) throws SQLException {
+    public static Category save(Category category) {
 
         Category result = category;
-        try {
-            Connection connection = Database.getInstance().getConnection() ;
+        String query;
 
-            String query = "INSERT INTO Category (title) VALUES (?);";
-            PreparedStatement preparedStmt = connection.prepareStatement(query);
-            preparedStmt.setString (1, category.getTitle());
+        try {
+            if (category.getId() != 0) {
+                query = "UPDATE category SET(name = ?);";
+            } else {
+                query = "INSERT INTO message (author, thread, content) VALUES (?,?,?);";
+            }
+            PreparedStatement preparedStmt = getConnection().prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            preparedStmt.setString(1, category.getTitle());
+
             int affectedRows = preparedStmt.executeUpdate();
 
             if (affectedRows == 0) {
                 throw new SQLException("Creating category failed, no rows affected.");
             }
 
-//            try (ResultSet generatedKeys = preparedStmt.getGeneratedKeys()) {
-//                if (generatedKeys.next()) {
-//                    message.setId(generatedKeys.getLong(1));
-//                                    }
-//                else {
-//                    throw new SQLException("Creating message failed, no ID obtained.");
-//                }
-//            }
-
-            result = category;
-
+            if (category.getId() == 0) {
+                try (ResultSet generatedKeys = preparedStmt.getGeneratedKeys()) {
+                    if (generatedKeys.next()) {
+                        result.setId(generatedKeys.getInt(1));
+                    } else {
+                        throw new SQLException("Creating category failed, no ID obtained.");
+                    }
+                }
+            }
         } catch (SQLException e) {
             e.printStackTrace();
             result = null;
         }
 
         return result;
+    }
+
+    public static void delete(Category category) {
+
+        String query = "DELETE from category where id=?";
+
+        try {
+            PreparedStatement preparedStmt = getConnection().prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            preparedStmt.setInt(1, category.getId());
+            preparedStmt.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static ArrayList<Category> getAll() {
+        String query = "SELECT * from category";
+        ArrayList<Category> categories = new ArrayList<>();
+        try {
+            PreparedStatement preparedStmt = getConnection().prepareStatement(query);
+            ResultSet rs = preparedStmt.executeQuery(query);
+            while (rs.next()) {
+                Category category = new Category();
+                category.setTitle(rs.getString("name"));
+                categories.add(category);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return categories;
+    }
+
+    public static Category getById() throws SQLException {
+        String query = "SELECT * from category WHERE id=? LIMIT 1";
+        Category category = null;
+
+        try {
+            PreparedStatement preparedStmt = getConnection().prepareStatement(query);
+            ResultSet rs = preparedStmt.executeQuery(query);
+            if (rs.next()) {
+                category = new Category();
+                category.setTitle(rs.getString("name"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return category;
     }
 }
