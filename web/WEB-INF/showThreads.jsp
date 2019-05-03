@@ -10,9 +10,17 @@
 <html>
 <body>
 <table>
-    <c:forEach items="${listThreads}" var="thread">
-        <tbody><a>${thread}</a></tbody>
+    <c:forEach items="${listThread}" var="thread">
+        <tr>
+            <td>
+                <a href="thread/?thrId=${thread.id}">${thread.title}</a>
+            </td>
+        </tr>
+        <tr>
+            <td><p>Auteur : ${thread.author}</p></td>
+        </tr>
     </c:forEach>
 </table>
+<c:out value="Mon id est : ${catId}"></c:out>
 </body>
 </html>

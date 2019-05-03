@@ -9,6 +9,12 @@ public class Thread {
     private String title;
     private User author;
 
+    public Thread(String title, User author, int id) {
+        this.title = title;
+        this.author = author;
+        this.id = id;
+    }
+
     public long getId() {
         return this.id;
     }
@@ -34,6 +40,9 @@ public class Thread {
     }
 
     public ArrayList<Message> messages() {
-        return MessageRepository.getByThread(this.getId());
+        return MessageRepository.getByThread(this.getId());   
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
