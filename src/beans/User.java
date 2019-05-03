@@ -5,20 +5,20 @@ import repositories.MessageRepository;
 import java.util.ArrayList;
 
 public class User {
-    private long id;
+    private int id;
     private String firstname;
     private String lastname;
     private String pseudo;
     private String email;
     private String password;
     private String avatar;
-    private long roleId;
+    private int roleId;
 
     public long getId() {
         return this.id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -74,7 +74,7 @@ public class User {
         return this.roleId;
     }
 
-    public void setRoleId(long roleId) {
+    public void setRoleId(int roleId) {
         this.roleId = roleId;
     }
 

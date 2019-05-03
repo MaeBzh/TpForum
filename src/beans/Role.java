@@ -1,14 +1,14 @@
 package beans;
 
 public class Role {
-    private long id;
+    private int id;
     private String name;
 
-    public long getId() {
+    public int getId() {
         return this.id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

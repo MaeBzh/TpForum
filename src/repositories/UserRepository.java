@@ -82,7 +82,7 @@ public class UserRepository {
             if (user.getId() == 0) {
                 try (ResultSet generatedKeys = preparedStmt.getGeneratedKeys()) {
                     if (generatedKeys.next()) {
-                        result.setId(generatedKeys.getLong(1));
+                        result.setId(generatedKeys.getInt(1));
                     } else {
                         throw new SQLException("Creating user failed, no ID obtained.");
                     }
@@ -134,7 +134,7 @@ public class UserRepository {
                 user.setPassword(rs.getString("password"));
                 user.setEmail(rs.getString("mail"));
                 user.setPseudo(rs.getString("pseudo"));
-                user.setId(rs.getLong("id"));
+                user.setId(rs.getInt("id"));
                 users.add(user);
             }
 
@@ -145,12 +145,13 @@ public class UserRepository {
         return users;
     }
 
-    public static User getById() throws SQLException {
+    public static User getById(int user_id) throws SQLException {
         String query = "SELECT * from user WHERE id=? LIMIT 1";
         User user = null;
 
         try {
             PreparedStatement preparedStmt = getConnection().prepareStatement(query);
+            preparedStmt.setInt(1, user_id);
             ResultSet rs = preparedStmt.executeQuery(query);
             if (rs.next()) {
                 user = new User();
@@ -160,7 +161,7 @@ public class UserRepository {
                 user.setPassword(rs.getString("password"));
                 user.setEmail(rs.getString("mail"));
                 user.setPseudo(rs.getString("pseudo"));
-                user.setId(rs.getLong("id"));
+                user.setId(rs.getInt("id"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -186,12 +187,11 @@ public class UserRepository {
                 user.setPassword(rs.getString("password"));
                 user.setEmail(rs.getString("mail"));
                 user.setPseudo(rs.getString("pseudo"));
-                user.setId(rs.getLong("id"));
+                user.setId(rs.getInt("id"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        System.out.println(user);
 
         return user;
     }

@@ -1,9 +1,13 @@
 package beans;
 
 import org.joda.time.DateTime;
+import repositories.ThreadRepository;
+import repositories.UserRepository;
+
+import java.sql.SQLException;
 
 public class Message {
-    private long id;
+    private int id;
     private String content;
     private DateTime date;
     private int authorId;
@@ -13,7 +17,7 @@ public class Message {
         return this.id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -49,11 +53,11 @@ public class Message {
         this.threadId = thread;
     }
 
-//    public User author() {
-//        return UserRepository.getById(this.getAuthorId());
-//    }
-//
-//    public Thread thread() {
-//        return ThreadRepository.getById(this.getThreadId());
-//    }
+    public User author() throws SQLException {
+        return UserRepository.getById(this.getAuthorId());
+    }
+
+    public Thread thread() throws SQLException{
+        return ThreadRepository.getById(this.getThreadId());
+    }
 }
